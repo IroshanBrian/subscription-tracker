@@ -19,3 +19,5 @@ authRouter.post("/sign-out", (req, res) => {
     title: "Sign Out",
   });
 });
+
+export default authRouter;

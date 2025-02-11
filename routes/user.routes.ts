@@ -31,3 +31,5 @@ userRouter.delete("/:id", (req, res) => {
     title: "Delete A User",
   });
 });
+
+export default userRouter;
