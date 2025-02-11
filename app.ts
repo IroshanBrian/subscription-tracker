@@ -3,6 +3,8 @@ import { PORT } from "./config/env";
 import subscriptionRouter from "./routes/subscription.routes";
 import authRouter from "./routes/auth.routes";
 import userRouter from "./routes/user.routes";
+import logger from "./utils/logger";
+import connectDB from "./database/mongoDB";
 
 const app = express();
 
@@ -14,8 +16,9 @@ app.get("/", (req, res) => {
   res.send("Welcome to Subscription Service");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port http://localhost:${PORT}`);
+app.listen(PORT, async () => {
+  logger.info(`Server is running on port http://localhost:${PORT}`);
+  await connectDB();
 });
 
 export default app;
