@@ -62,7 +62,7 @@ const subscriptionSchema = new mongoose.Schema(
         validator: function (value: Date): boolean {
           return value > (this as any).startDate;
         },
-        message: "Start date must be in the pasts",
+        message: "Renewal date must be greater than start date",
       },
     },
   },
