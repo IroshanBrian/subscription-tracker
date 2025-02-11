@@ -2,8 +2,10 @@ import { Router } from "express";
 
 const subscriptionRouter = Router();
 
-subscriptionRouter.post("/", (req, res) => {
-    res.send({
-        title: "Get All Subscription",
-    });
+subscriptionRouter.get("/", (req, res) => {
+  res.send({
+    title: "Get All Subscription",
+  });
 });
+
+export default subscriptionRouter;
