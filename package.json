@@ -7,7 +7,7 @@
   "type": "commonjs",
   "main": "app.ts",
   "scripts": {
-    "dev": "npx nodemon src/app.ts",
+    "dev": "npx nodemon app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
@@ -18,6 +18,8 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "@types/dotenv": "^6.1.1",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2"
   }
 }
