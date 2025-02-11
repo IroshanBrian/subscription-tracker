@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-
 import {DB_URI} from '../config/env';
 import logger from '../utils/logger';
 
