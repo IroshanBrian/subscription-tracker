@@ -1,7 +1,6 @@
 import { Request, NextFunction, Response } from "express";
 import Subscription from "../models/subscription.model";
 
-
 interface AuthRequest extends Request {
   user?: { _id: string };
 }
@@ -60,4 +59,29 @@ export const getUserSubscriptions = async (
   }
 };
 
+export const getSubscription = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const subscription = await Subscription.findById(req.params.id);
 
+    if (!subscription) {
+      res.status(404).json({
+        success: false,
+        message: "Subscription not found",
+      });
+
+      return;
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "User subscriptions fetched successfully",
+      data: subscription,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
