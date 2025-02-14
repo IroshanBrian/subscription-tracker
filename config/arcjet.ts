@@ -1,4 +1,4 @@
-import arcjet,{shield, detectBot,tokenBucket} from "arcjet";
+import arcjet, { shield, detectBot, tokenBucket } from "@arcjet/node";
 import { ARCJET_KEY } from "./env";
 
 export const aj = arcjet({
@@ -8,9 +8,7 @@ export const aj = arcjet({
     shield({ mode: "LIVE" }),
     detectBot({
       mode: "LIVE",
-      allow: [
-        "CATEGORY:SEARCH_ENGINE",
-      ],
+      allow: ["CATEGORY:SEARCH_ENGINE"],
     }),
     tokenBucket({
       mode: "LIVE",

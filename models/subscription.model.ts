@@ -35,9 +35,9 @@ const subscriptionSchema = new mongoose.Schema(
         "education",
       ],
     },
-    payment: {
+    paymentMethod: {
       type: String,
-      required: [true, "Payment method is required"],
+      required: true,
       trim: true,
     },
     status: {

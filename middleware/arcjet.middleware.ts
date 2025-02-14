@@ -8,7 +8,7 @@ export const arcjetMiddleware = async (
   next: NextFunction
 ) => {
   try {
-    const decision = await aj.protect(req, {requested: 1} );
+    const decision = await aj.protect(req, { requested: 1 });
 
     if (decision.isDenied()) {
       if (decision.reason.isRateLimit()) {
@@ -27,7 +27,6 @@ export const arcjetMiddleware = async (
     }
 
     next();
-
   } catch (error) {
     logger.error(`Arcjet middleware error: ${error}`);
     next(error);

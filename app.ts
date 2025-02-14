@@ -16,7 +16,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
-app.use(arcjetMiddleware);
+app.use((req, res, next) => {
+  arcjetMiddleware(req, res, next).catch(next);
+});
 
 app.use("/api/v1/subscriptions", subscriptionRouter);
 app.use("/api/v1/auth", authRouter);
