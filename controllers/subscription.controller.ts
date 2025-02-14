@@ -1,5 +1,7 @@
 import { Request, NextFunction, Response } from "express";
 import Subscription from "../models/subscription.model";
+import { workflowClient } from "../config/upstash";
+import { SERVER_URL } from "../config/env";
 
 interface AuthRequest extends Request {
   user?: { _id: string };
@@ -19,6 +21,17 @@ export const createSubscription = async (
     const subscription = await Subscription.create({
       ...req.body,
       user: req.user._id,
+    });
+
+    const { workflowRunId } = await workflowClient.trigger({
+      url: `${SERVER_URL}/api/v1/workflows/subscriptions/reminder`,
+      body: {
+        subscriptionId: subscription._id,
+      },
+      headers: {
+        "content-type": "application/json",
+      },
+      retries: 0,
     });
 
     res.status(201).json({
